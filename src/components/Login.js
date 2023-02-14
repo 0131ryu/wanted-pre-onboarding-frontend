@@ -59,10 +59,10 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      const accessToken = response?.data?.access_token;
+      const access_token = response?.data?.access_token;
       const roles = response?.data?.roles;
-      localStorage.setItem("accessToken", accessToken);
-      setAuth({ email, password, roles, accessToken });
+      localStorage.setItem("access_token", access_token);
+      setAuth({ email, password, roles, access_token });
       setEmail("");
       setPassword("");
       navigate("/todo");
