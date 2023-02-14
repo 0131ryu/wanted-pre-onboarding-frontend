@@ -30,7 +30,7 @@ const TodoItem = ({ todo, editTodo, deleteTodo }) => {
                 수정
               </todoItemStyle.Button>
               <todoItemStyle.Button
-                data-testid="modify-button"
+                data-testid="delete-button"
                 onClick={() => {
                   deleteTodo(t.id);
                 }}
