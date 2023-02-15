@@ -32,40 +32,6 @@ const TodoItem = ({ todo, deleteTodo, modifyTodo }) => {
 
   return (
     <>
-<<<<<<< HEAD
-      {todo.map((t, i) => (
-        <todoStyle.Li key={i}>
-          <todoStyle.Label>
-            <input
-              type="checkbox"
-              checked={t.isCompleted}
-              onChange={(e) => {
-                editTodo(t.id, t.todo, e.target.checked);
-              }}
-            />
-            <todoStyle.Span>{t.todo}</todoStyle.Span>
-
-            <todoStyle.IconPtag>
-              <todoItemStyle.Button data-testid="modify-button">
-                <FontAwesomeIcon
-                  icon={faPenNib}
-                  style={{
-                    color: "var(--light-orange)",
-                    marginLeft: "0.25rem",
-                  }}
-                />
-                수정
-              </todoItemStyle.Button>
-              <todoItemStyle.Button
-                data-testid="delete-button"
-                onClick={() => {
-                  deleteTodo(t.id);
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faTrash}
-                  style={{ color: "var(--dark-orange)", marginLeft: "0.25rem" }}
-=======
       <todoStyle.Li>
         {isModify ? (
           <>
@@ -81,7 +47,6 @@ const TodoItem = ({ todo, deleteTodo, modifyTodo }) => {
                   type="text"
                   value={editText}
                   onChange={modifyInputText}
->>>>>>> todo-#2
                 />
                 <button
                   className="todoapp__item-edit-btn"
