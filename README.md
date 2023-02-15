@@ -1,5 +1,5 @@
 
-# 프로젝트 시작 : npm run start
+# 프로젝트 시작 : npm start
 
 
 > 테스트 아이디 : help@naver.com
