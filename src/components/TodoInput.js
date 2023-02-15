@@ -16,21 +16,19 @@ const TodoInput = () => {
 
   const handlerSubmit = useCallback(
     async (e) => {
-      e.preventDefault()
+      e.preventDefault();
       if (newTodo.length <= 0) {
         setErrMessage("todo에 입력 후 추가해주세요.");
       } else {
         errRef.current.focus();
-      await todoAPI.createTodo({ todo: newTodo });
-      setNewTodo("");
-      window.location.reload();
-      getTodos();
+        await todoAPI.createTodo({ todo: newTodo });
+        setNewTodo("");
+        window.location.reload();
+        getTodos();
       }
-      
     },
-    [newTodo]
+    [getTodos, newTodo]
   );
- 
 
   return (
     <>

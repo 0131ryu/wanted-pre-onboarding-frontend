@@ -8,7 +8,7 @@ import * as todoAPI from "../utils/todoAPI";
 import useGetTodo from "../hooks/useGetTodo";
 
 const TodoItem = ({ todo, modifyTodo }) => {
-  const [getTodos] = useGetTodo();
+  const [todos, getTodos] = useGetTodo();
   const [isModify, setIsModify] = useState(false);
   const [editText, setEditText] = useState(todo.todo);
   const [isChecked, setIsChecked] = useState(todo.isCompleted);
@@ -36,6 +36,7 @@ const TodoItem = ({ todo, modifyTodo }) => {
         todo: editText,
         isCompleted: isCompleted,
       });
+      // getTodos();
       window.location.reload();
     },
     [editText]
@@ -43,7 +44,6 @@ const TodoItem = ({ todo, modifyTodo }) => {
 
   const deleteTodo = useCallback(
     async (todoId) => {
-      console.log(todoId);
       await todoAPI.deleteTodo({ id: todoId });
       window.location.reload();
     },
