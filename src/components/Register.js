@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   faCheck,
   faTimes,
@@ -89,6 +89,10 @@ const Register = () => {
       errRef.current.focus();
     }
   };
+
+  const onSignIn = useCallback(() => {
+    navigate("/signin");
+  }, []);
 
   return (
     <>
@@ -226,7 +230,7 @@ const Register = () => {
           이미 계정이 있나요?
           <br />
           <span className="line">
-            <registerStyle.aTag href="/signin">로그인</registerStyle.aTag>
+            <registerStyle.aTag onClick={onSignIn}>로그인</registerStyle.aTag>
           </span>
         </registerStyle.pTag>
       </registerStyle.Section>

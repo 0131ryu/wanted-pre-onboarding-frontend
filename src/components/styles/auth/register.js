@@ -39,6 +39,7 @@ const aTag = styled.a`
   font-weight: bold;
   text-decoration-line: none;
   margin-left: 2.5rem;
+  cursor: pointer;
 `;
 
 export const registerStyle = {

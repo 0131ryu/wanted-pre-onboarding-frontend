@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect, useContext, useCallback } from "react";
 import AuthContext from "../context/AuthProvider";
 import { loginStyle } from "./styles/auth/login";
 import { authStyle } from "./styles/auth";
@@ -80,6 +80,10 @@ const Login = () => {
     }
   };
 
+  const onSignUp = useCallback(() => {
+    navigate("/signup");
+  }, []);
+
   return (
     <>
       <loginStyle.Section>
@@ -141,7 +145,7 @@ const Login = () => {
           계정이 없습니까?
           <br />
           <span className="line">
-            <loginStyle.aTag href="/signup">회원가입</loginStyle.aTag>
+            <loginStyle.aTag onClick={onSignUp}>회원가입</loginStyle.aTag>
           </span>
         </loginStyle.pTag>
       </loginStyle.Section>

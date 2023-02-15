@@ -38,6 +38,7 @@ const aTag = styled.a`
   font-weight: bold;
   text-decoration-line: none;
   margin-left: 1rem;
+  cursor: pointer;
 `;
 
 export const loginStyle = {
