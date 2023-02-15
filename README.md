@@ -1,7 +1,13 @@
 
-# 테스트 아이디 : help@naver.com
+# 프로젝트 시작 
+## npm start
 
-# 테스트 비밀번호 : 12341234
+# 배포 주소 
+## https://merry-bombolone-590b95.netlify.app
+
+# 테스트
+## 아이디 : help@naver.com
+## 비밀번호 : : 12341234
 
 1) 회원가입 하기
 
