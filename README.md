@@ -3,7 +3,7 @@
 ## npm start
 
 # 배포 주소 
-## https://zingy-melomakarona-88a460.netlify.app
+## https://merry-bombolone-590b95.netlify.app
 
 # 테스트
 ## 아이디 : help@naver.com
