@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, deleteTodo, modifyTodo }) => {
+const TodoList = ({ todos }) => {
   return (
     <section>
       {todos.map((todo, i) => {
@@ -8,8 +8,6 @@ const TodoList = ({ todos, deleteTodo, modifyTodo }) => {
           <TodoItem
             key={i}
             todo={todo}
-            deleteTodo={deleteTodo}
-            modifyTodo={modifyTodo}
           />
         );
       })}
