@@ -1,9 +1,13 @@
 
-# 프로젝트 시작 : npm start
+# 프로젝트 시작 
+## npm start
 
+# 배포 주소 
+## https://zingy-melomakarona-88a460.netlify.app
 
-> 테스트 아이디 : help@naver.com
-> 테스트 비밀번호 : 12341234
+# 테스트
+## 아이디 : help@naver.com
+## 비밀번호 : : 12341234
 
 1) 회원가입 하기
 
