@@ -37,18 +37,18 @@ const Label = styled.label`
   display: flex;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
+  width: 22rem;
 `;
 
 const Span = styled.span`
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   margin-left: 0.5rem;
 `;
 
 const IconPtag = styled.p`
   display: flex;
   margin-top: 1.4rem;
-  margin-left: 5rem;
-  font-size: 20px;
+  width: 14rem;
 `;
 
 const IconButton = styled.p`

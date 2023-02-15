@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { todoStyle } from "./styles/todo";
-
-const ADD_TODO = "/todos";
+import * as todoAPI from "../utils/todoAPI";
+import useGetTodo from "../hooks/useGetTodo";
 
 const TodoInput = () => {
+  const [todos, getTodos] = useGetTodo();
   const errRef = useRef();
-  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [errMessage, setErrMessage] = useState("");
 
@@ -14,34 +14,23 @@ const TodoInput = () => {
     setErrMessage("");
   }, [newTodo]);
 
-  const handlerSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        ADD_TODO,
-        JSON.stringify({
-          id: 1,
-          todo: newTodo,
-          isCompleted: false,
-          userId: 1,
-        }),
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      setNewTodo("");
-      alert("등록되었습니다.");
-    } catch (err) {
-      if (err.response?.status === 400) {
+  const handlerSubmit = useCallback(
+    async (e) => {
+      e.preventDefault()
+      if (newTodo.length <= 0) {
         setErrMessage("todo에 입력 후 추가해주세요.");
+      } else {
+        errRef.current.focus();
+      await todoAPI.createTodo({ todo: newTodo });
+      setNewTodo("");
+      window.location.reload();
+      getTodos();
       }
-      errRef.current.focus();
-    }
-  };
+      
+    },
+    [newTodo]
+  );
+ 
 
   return (
     <>
