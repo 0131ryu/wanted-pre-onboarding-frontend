@@ -11,36 +11,9 @@ const MainTodo = () => {
     window.location.replace("/");
   }, []);
 
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
   const [accessToken, setAccessToken] = useState("");
   const [contents, setContents] = useState("");
-
-  const editTodo = async (id, todo, isCompleted) => {
-    try {
-      const response = await axios.put(
-        `/todos/${id}`,
-        JSON.stringify({
-          todo: todo,
-          isCompleted: isCompleted,
-        }),
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      console.log(response);
-      if (isCompleted === true) {
-        alert("체크되었습니다.");
-      } else if (isCompleted === false) {
-        alert("체크가 해제되었습니다.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const deleteTodo = async (id) => {
     try {
@@ -58,6 +31,29 @@ const MainTodo = () => {
     }
   };
 
+  const modifyTodo = async (id, todo, isCompleted) => {
+    try {
+      const response = await axios.put(
+        `/todos/${id}`,
+        JSON.stringify({
+          todo: todo,
+          isCompleted: isCompleted,
+        }),
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(response);
+      // alert("수정 완료");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     const access_token = localStorage.getItem("access_token");
     setAccessToken(access_token);
@@ -68,14 +64,14 @@ const MainTodo = () => {
         headers: { Authorization: `Bearer ${access_token}` },
       })
         .then((response) => {
-          setTodo(response.data);
+          setTodos(response.data);
         })
         .catch((error) => {
           console.log(error.response.data.message);
         });
     };
     getTodos();
-  }, [todo]);
+  }, []);
 
   return (
     <todoStyle.Section>
@@ -86,7 +82,11 @@ const MainTodo = () => {
 
       <TodoInput />
       <todolistStyle.DivScroll>
-        <TodoList todo={todo} editTodo={editTodo} deleteTodo={deleteTodo} />
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          modifyTodo={modifyTodo}
+        />
       </todolistStyle.DivScroll>
     </todoStyle.Section>
   );

@@ -1,11 +1,18 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todo, editTodo, deleteTodo }) => {
+const TodoList = ({ todos, deleteTodo, modifyTodo }) => {
   return (
     <section>
-      <TodoItem todo={todo} editTodo={editTodo} deleteTodo={deleteTodo} />
+      {todos.map((todo, i) => {
+        return (
+          <TodoItem
+            key={i}
+            todo={todo}
+            deleteTodo={deleteTodo}
+            modifyTodo={modifyTodo}
+          />
+        );
+      })}
     </section>
   );
 };
