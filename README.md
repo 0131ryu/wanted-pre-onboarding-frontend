@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 # 테스트 아이디 : help@naver.com
 
 # 테스트 비밀번호 : 12341234
-=======
+
 1) 회원가입 하기
 
 ![회원가입](https://user-images.githubusercontent.com/89256977/218968913-572b0187-85e0-420e-afeb-f7b031ddb4d9.gif)
