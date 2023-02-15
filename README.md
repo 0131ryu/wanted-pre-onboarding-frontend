@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+1) 회원가입 하기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![회원가입](https://user-images.githubusercontent.com/89256977/218968913-572b0187-85e0-420e-afeb-f7b031ddb4d9.gif)
 
-## Available Scripts
 
-In the project directory, you can run:
+2) 로그인하기
 
-### `npm start`
+![로그인](https://user-images.githubusercontent.com/89256977/218969182-1c8e3a3a-6f78-4a04-8769-f77a1069862b.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3) todo 새로 생성(createTodo)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![todo 새로 생성](https://user-images.githubusercontent.com/89256977/218969280-89f37682-6462-4da3-a512-b9db217f732c.gif)
 
-### `npm test`
+4) todo 체크박스
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![체크박스](https://user-images.githubusercontent.com/89256977/218969393-c5bcda71-c444-4364-a7d7-deaf15bedc1e.gif)
 
-### `npm run build`
+5) todo 수정
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![todo 수정](https://user-images.githubusercontent.com/89256977/218969484-5e470654-f677-49f3-9923-d74efc2fbc06.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5) todo 삭제
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![todo 삭제](https://user-images.githubusercontent.com/89256977/218969492-e9763956-2ef0-4927-9dba-6c599c77bcb7.gif)
