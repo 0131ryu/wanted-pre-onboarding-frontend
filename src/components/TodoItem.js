@@ -1,6 +1,6 @@
 import { faPenNib, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { todoStyle } from "./styles/todo";
 import { todoItemStyle } from "./styles/todo/todoItem";
 import { modifyTodo, deleteTodo } from "../utils/todoAPI";
@@ -10,15 +10,30 @@ const TodoItem = ({ todo, setIsEdit, setIsDelete, isCompleted }) => {
   const [editText, setEditText] = useState(todo.todo);
   const [isChecked, setIsChecked] = useState(isCompleted);
 
-  const editCheckbox = useCallback(async () => {
+  const isComponentMounted = useRef(false);
+
+  const clickCheckbox = () => {
     setIsChecked((prev) => !prev);
+    setIsEdit((prev) => !prev);
+  };
+
+  const editCheckbox = useCallback(async () => {
     await modifyTodo({
       id: todo.id,
       todo: todo.todo,
       isCompleted: isChecked,
     });
-    setIsEdit((prev) => !prev);
-  }, [isChecked, setIsEdit, todo.id, todo.todo]);
+  }, [isChecked, todo.id, todo.todo]);
+
+  useEffect(() => {
+    if (isComponentMounted.current) {
+      editCheckbox();
+    }
+  }, [editCheckbox, isChecked]);
+
+  useEffect(() => {
+    isComponentMounted.current = true;
+  }, []);
 
   useEffect(() => {
     setIsChecked(isCompleted);
@@ -53,19 +68,11 @@ const TodoItem = ({ todo, setIsEdit, setIsDelete, isCompleted }) => {
   return (
     <>
       <todoStyle.Li>
+        <input type="checkbox" checked={isChecked} onChange={clickCheckbox} />
         {isModify ? (
           <>
             <label style={{ display: "flex" }}>
-              <input
-                type="checkbox"
-                checked={isChecked}
-                onChange={editCheckbox}
-              />
-              <form
-                onSubmit={() =>
-                  modifySubmit(todo.id, editText, todo.isCompleted)
-                }
-              >
+              <form onSubmit={() => modifySubmit(todo.id, editText, isChecked)}>
                 {/* 내용 수정 */}
                 <todoItemStyle.InputEdit
                   type="text"
@@ -94,11 +101,6 @@ const TodoItem = ({ todo, setIsEdit, setIsDelete, isCompleted }) => {
         ) : (
           <>
             <todoStyle.Label>
-              <todoItemStyle.InputCheckbox
-                type="checkbox"
-                checked={isChecked}
-                onChange={editCheckbox}
-              />
               <todoStyle.Span>{todo.todo}</todoStyle.Span>
             </todoStyle.Label>
             <todoStyle.IconPtag>
