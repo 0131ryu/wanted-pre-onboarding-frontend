@@ -92,7 +92,7 @@ const Register = () => {
 
   const onSignIn = useCallback(() => {
     navigate("/signin");
-  }, []);
+  }, [navigate]);
 
   return (
     <>
