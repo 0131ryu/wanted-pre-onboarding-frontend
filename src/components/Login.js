@@ -82,7 +82,7 @@ const Login = () => {
 
   const onSignUp = useCallback(() => {
     navigate("/signup");
-  }, []);
+  }, [navigate]);
 
   return (
     <>

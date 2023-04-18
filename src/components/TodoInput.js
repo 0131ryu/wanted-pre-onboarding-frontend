@@ -1,11 +1,8 @@
-import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { todoStyle } from "./styles/todo";
 import * as todoAPI from "../utils/todoAPI";
-import useGetTodo from "../hooks/useGetTodo";
 
-const TodoInput = () => {
-  const [todos, getTodos] = useGetTodo();
+const TodoInput = ({ setIsAdd }) => {
   const errRef = useRef();
   const [newTodo, setNewTodo] = useState("");
   const [errMessage, setErrMessage] = useState("");
@@ -23,11 +20,10 @@ const TodoInput = () => {
         errRef.current.focus();
         await todoAPI.createTodo({ todo: newTodo });
         setNewTodo("");
-        window.location.reload();
-        getTodos();
+        setIsAdd((prev) => !prev);
       }
     },
-    [getTodos, newTodo]
+    [newTodo, setIsAdd]
   );
 
   return (
