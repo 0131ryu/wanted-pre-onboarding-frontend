@@ -1,16 +1,17 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, setIsEdit, setIsDelete }) => {
   return (
     <section>
-      {todos.map((todo, i) => {
-        return (
-          <TodoItem
-            key={i}
-            todo={todo}
-          />
-        );
-      })}
+      {todos.map((todo) => (
+        <TodoItem
+          todo={todo}
+          key={todo.id}
+          setIsEdit={setIsEdit}
+          setIsDelete={setIsDelete}
+          isCompleted={todo.isCompleted}
+        />
+      ))}
     </section>
   );
 };

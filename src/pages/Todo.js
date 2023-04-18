@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
-import useGetTodo from "../hooks/useGetTodo";
+import { getTodos } from "../utils/todoAPI";
 import { todoStyle } from "../components/styles/todo";
 import { todolistStyle } from "../components/styles/todo/todolist";
 
@@ -8,17 +8,26 @@ import TodoInput from "../components/TodoInput";
 import TodoList from "../components/TodoList";
 
 const Todo = () => {
-  const [todos, getTodos] = useGetTodo();
+  const [todos, setTodos] = useState([]);
+  const [isAdd, setIsAdd] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
+
+  const bringTodos = async () => {
+    const response = await getTodos();
+    setTodos(response);
+  };
+
+  useEffect(() => {
+    bringTodos();
+  }, [isAdd, isEdit, isDelete]);
+
   const isToken = localStorage.getItem("access_token");
 
   const logOut = useCallback(() => {
     localStorage.clear();
     window.location.replace("/");
   }, []);
-
-  useEffect(() => {
-    getTodos();
-  }, [getTodos]);
 
   return (
     <>
@@ -28,10 +37,13 @@ const Todo = () => {
             logout
           </todoStyle.LogoutButton>
           <todoStyle.H1>TODO page</todoStyle.H1>
-
-          <TodoInput />
+          <TodoInput setIsAdd={setIsAdd} />
           <todolistStyle.DivScroll>
-            <TodoList todos={todos} />
+            <TodoList
+              todos={todos}
+              setIsEdit={setIsEdit}
+              setIsDelete={setIsDelete}
+            />
           </todolistStyle.DivScroll>
         </todoStyle.Section>
       ) : (

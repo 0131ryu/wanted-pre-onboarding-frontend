@@ -1,27 +1,28 @@
-/* eslint-disable no-unused-expressions */
 import { faPenNib, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { todoStyle } from "./styles/todo";
 import { todoItemStyle } from "./styles/todo/todoItem";
-import * as todoAPI from "../utils/todoAPI";
-import useGetTodo from "../hooks/useGetTodo";
+import { modifyTodo, deleteTodo } from "../utils/todoAPI";
 
-const TodoItem = ({ todo, modifyTodo }) => {
-  const [todos, getTodos] = useGetTodo();
+const TodoItem = ({ todo, setIsEdit, setIsDelete, isCompleted }) => {
   const [isModify, setIsModify] = useState(false);
   const [editText, setEditText] = useState(todo.todo);
-  const [isChecked, setIsChecked] = useState(todo.isCompleted);
+  const [isChecked, setIsChecked] = useState(isCompleted);
 
   const editCheckbox = useCallback(async () => {
-    setIsModify(false);
-    await todoAPI.modifyTodo({
+    setIsChecked((prev) => !prev);
+    await modifyTodo({
       id: todo.id,
       todo: todo.todo,
-      isCompleted: !isChecked,
+      isCompleted: isChecked,
     });
-    window.location.reload();
-  }, [isChecked, todo]);
+    setIsEdit((prev) => !prev);
+  }, [isChecked, setIsEdit, todo.id, todo.todo]);
+
+  useEffect(() => {
+    setIsChecked(isCompleted);
+  }, [isCompleted]);
 
   const modifyInputText = useCallback((e) => {
     e.preventDefault();
@@ -31,23 +32,22 @@ const TodoItem = ({ todo, modifyTodo }) => {
   const modifySubmit = useCallback(
     async (todoId, editText, isCompleted) => {
       setIsModify(false);
-      await todoAPI.modifyTodo({
+      await modifyTodo({
         id: todoId,
         todo: editText,
         isCompleted: isCompleted,
       });
-      // getTodos();
-      window.location.reload();
+      setIsEdit((prev) => !prev);
     },
-    [editText]
+    [setIsEdit]
   );
 
-  const deleteTodo = useCallback(
+  const deleteTodoText = useCallback(
     async (todoId) => {
-      await todoAPI.deleteTodo({ id: todoId });
-      window.location.reload();
+      await deleteTodo({ id: todoId });
+      setIsDelete((prev) => !prev);
     },
-    [getTodos]
+    [setIsDelete]
   );
 
   return (
@@ -121,7 +121,7 @@ const TodoItem = ({ todo, modifyTodo }) => {
               <todoItemStyle.Button
                 data-testid="delete-button"
                 type="button"
-                onClick={() => deleteTodo(todo.id)}
+                onClick={() => deleteTodoText(todo.id)}
               >
                 <FontAwesomeIcon
                   icon={faTrash}
