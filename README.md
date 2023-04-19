@@ -1,36 +1,46 @@
 
-# 프로젝트 시작 
-## npm start
+# 원티드 프리온보딩 과제
 
-# 배포 주소 
-## https://merry-bombolone-590b95.netlify.app
+## * 모듈 설치
+> npm install 
+## * 로컬서버 실행
+> npm start
 
-# 테스트
-## 아이디 : help@naver.com
-## 비밀번호 : : 12341234
+# [배포 사이트](https://thriving-starlight-3edb42.netlify.app)
 
-1) 회원가입 하기
+## 테스트
+> 아이디 : spring@naver.com
 
-![회원가입](https://user-images.githubusercontent.com/89256977/218968913-572b0187-85e0-420e-afeb-f7b031ddb4d9.gif)
+> 비밀번호 : : 12341234
+
+## 이전과 달라진 점
+▶ Issue에 [Updated 항목](https://github.com/0131ryu/wanted-pre-onboarding-frontend/issues/6) 생성
+
+▶ 원인과 수정사항 정리(branch [update-#6](https://github.com/0131ryu/wanted-pre-onboarding-frontend/tree/update-%236)) 
+
+### 1) 회원가입 하기
+![todo 회원가입](https://user-images.githubusercontent.com/89256977/232963180-fa53409a-294c-475a-ad61-190a719b1df8.gif)
 
 
-2) 로그인하기
+### 2) 로그인하기
 
-![로그인](https://user-images.githubusercontent.com/89256977/218969182-1c8e3a3a-6f78-4a04-8769-f77a1069862b.gif)
+![todo 로그인](https://user-images.githubusercontent.com/89256977/232963222-7dbfa70f-8ce9-41ed-a8d9-a5e210c599a7.gif)
 
-3) todo 새로 생성(createTodo)
 
-![todo 새로 생성](https://user-images.githubusercontent.com/89256977/218969280-89f37682-6462-4da3-a512-b9db217f732c.gif)
+### 3) todo 새로 생성(createTodo)
+![todo 새 글 생성](https://user-images.githubusercontent.com/89256977/232963301-2243fca5-2e86-4cce-bd7f-07fdd69be1ed.gif)
 
-4) todo 체크박스
 
-![체크박스](https://user-images.githubusercontent.com/89256977/218969393-c5bcda71-c444-4364-a7d7-deaf15bedc1e.gif)
+### 4) todo 체크박스
+![todo 체크박스](https://user-images.githubusercontent.com/89256977/232963855-54367889-ae31-402f-bc46-a12421d66a72.gif)
 
-5) todo 수정
 
-![todo 수정](https://user-images.githubusercontent.com/89256977/218969484-5e470654-f677-49f3-9923-d74efc2fbc06.gif)
+### 5) todo 수정
 
-5) todo 삭제
+![todo 수정내용](https://user-images.githubusercontent.com/89256977/232963532-4a070cc6-7c75-4da6-b879-fb7293b39001.gif)
 
-![todo 삭제](https://user-images.githubusercontent.com/89256977/218969492-e9763956-2ef0-4927-9dba-6c599c77bcb7.gif)
->>>>>>> dea923e906f45c97e53c993414336419b3efac1e
+
+### 5) todo 삭제
+![todo 내용 삭제](https://user-images.githubusercontent.com/89256977/232963550-ff503879-bf8e-42e1-8025-25a52edc96ce.gif)
+
+
