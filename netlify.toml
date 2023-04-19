@@ -1,0 +1,11 @@
+[[redirects]]
+from = '/auth/*'
+to = 'https://www.pre-onboarding-selection-task.shop/:splat'
+status = 200
+force = true
+
+[[redirects]]
+from = '/todos/*'
+to = 'https://www.pre-onboarding-selection-task.shop/:splat'
+status = 200
+force = true
