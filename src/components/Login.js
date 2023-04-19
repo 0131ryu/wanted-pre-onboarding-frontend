@@ -3,14 +3,13 @@ import AuthContext from "../context/AuthProvider";
 import { loginStyle } from "./styles/auth/login";
 import { authStyle } from "./styles/auth";
 
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { signIn } from "../utils/authAPI";
 
 const EMAIL_REGEX = /@/;
 const PASSWORD_REGEX = /().{8,}/;
-const LOGIN_URL = "/auth/signin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,20 +44,8 @@ const Login = () => {
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({
-          email: email,
-          password: password,
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
+    const response = await signIn({ email, password });
+    if (response?.status === 200) {
       const access_token = response?.data?.access_token;
       const roles = response?.data?.roles;
       localStorage.setItem("access_token", access_token);
@@ -66,16 +53,8 @@ const Login = () => {
       setEmail("");
       setPassword("");
       navigate("/todo");
-    } catch (err) {
-      if (!err?.response) {
-        setErrMessage("서버 연결 실패");
-      } else if (err.response?.status === 404) {
-        setErrMessage("잘못된 이메일을 입력하거나, 없는 이메일입니다.");
-      } else if (err.response?.status === 401) {
-        setErrMessage("비밀번호를 다시 확인하세요.");
-      } else {
-        setErrMessage("로그인 실패");
-      }
+    } else {
+      setErrMessage("로그인 실패");
       errRef.current.focus();
     }
   };

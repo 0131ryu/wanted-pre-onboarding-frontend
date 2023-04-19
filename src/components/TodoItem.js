@@ -78,6 +78,7 @@ const TodoItem = ({ todo, setIsEdit, setIsDelete, isCompleted }) => {
                   type="text"
                   value={editText}
                   onChange={modifyInputText}
+                  data-testid="modify-input"
                 />
 
                 <todoItemStyle.EditButton
@@ -121,8 +122,8 @@ const TodoItem = ({ todo, setIsEdit, setIsDelete, isCompleted }) => {
                 수정
               </todoItemStyle.Button>
               <todoItemStyle.Button
-                data-testid="delete-button"
                 type="button"
+                data-testid="delete-button"
                 onClick={() => deleteTodoText(todo.id)}
               >
                 <FontAwesomeIcon
