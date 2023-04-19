@@ -4,15 +4,13 @@ const url = "https://www.pre-onboarding-selection-task.shop";
 
 module.exports = function (app) {
   app.use(
-    "/auth",
-    createProxyMiddleware({
+    createProxyMiddleware("/auth", {
       target: url,
       changeOrigin: true,
     })
   );
   app.use(
-    "/todos",
-    createProxyMiddleware({
+    createProxyMiddleware("/todos", {
       target: url,
       changeOrigin: true,
     })

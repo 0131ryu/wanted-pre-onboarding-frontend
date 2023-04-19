@@ -1,10 +1,9 @@
-import axios from "axios";
-
+import { instance } from "./instance";
 const TODO_URL = "/todos";
 
 const getTodos = async () => {
   try {
-    const response = await axios.get(TODO_URL, {
+    const response = await instance.get(TODO_URL, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
@@ -17,7 +16,7 @@ const getTodos = async () => {
 
 const createTodo = async ({ todo }) => {
   try {
-    const response = await axios.post(
+    const response = await instance.post(
       TODO_URL,
       JSON.stringify({
         todo: todo,
@@ -37,7 +36,7 @@ const createTodo = async ({ todo }) => {
 
 const modifyTodo = async ({ id, todo, isCompleted }) => {
   try {
-    const response = await axios.put(
+    const response = await instance.put(
       `${TODO_URL}/${id}`,
       JSON.stringify({
         todo: todo,
@@ -58,7 +57,7 @@ const modifyTodo = async ({ id, todo, isCompleted }) => {
 
 const deleteTodo = async ({ id }) => {
   try {
-    const response = await axios.delete(`${TODO_URL}/${id}`, {
+    const response = await instance.delete(`${TODO_URL}/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
