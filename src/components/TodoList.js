@@ -1,7 +1,6 @@
 import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, setIsEdit, setIsDelete }) => {
-  console.log("todos", todos);
   return (
     <section>
       {todos.map((todo) => (
