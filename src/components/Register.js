@@ -5,15 +5,14 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { registerStyle } from "./styles/auth/register";
 import { authStyle } from "./styles/auth";
+import { signUp } from "../utils/authAPI";
 
 const EMAIL_REGEX = /@/;
 const PASSWORD_REGEX = /().{8,}/;
-const REGISTER_URL = "/auth/signup";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -63,29 +62,11 @@ const Register = () => {
       setErrMessage("오류가 있어 등록하지 못합니다.");
       return;
     }
-    try {
-      await axios.post(
-        REGISTER_URL,
-        JSON.stringify({
-          email: email,
-          password: password,
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
+    const response = await signUp({ email, password });
+    if (response?.status === 201) {
       navigate("/signin");
-    } catch (err) {
-      if (!err?.response) {
-        setErrMessage("No Server Response");
-      } else if (err.response?.status === 400) {
-        setErrMessage("Email이 이미 있습니다.");
-      } else {
-        setErrMessage("회원가입 실패");
-      }
+    } else if (response.response.status === 400) {
+      setErrMessage("회원가입 실패");
       errRef.current.focus();
     }
   };

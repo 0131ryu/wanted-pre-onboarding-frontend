@@ -1,13 +1,13 @@
 import axios from "axios";
 
+const TODO_URL = "/todos";
+
 const getTodos = async () => {
   try {
-    const response = await axios.get("/todos", {
+    const response = await axios.get(TODO_URL, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        "Content-Type": "application/json",
       },
-      withCredentials: true,
     });
     return response.data;
   } catch (err) {
@@ -18,7 +18,7 @@ const getTodos = async () => {
 const createTodo = async ({ todo }) => {
   try {
     const response = await axios.post(
-      "/todos",
+      TODO_URL,
       JSON.stringify({
         todo: todo,
       }),
@@ -27,7 +27,6 @@ const createTodo = async ({ todo }) => {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           "Content-Type": "application/json",
         },
-        withCredentials: true,
       }
     );
     return response.data;
@@ -39,7 +38,7 @@ const createTodo = async ({ todo }) => {
 const modifyTodo = async ({ id, todo, isCompleted }) => {
   try {
     const response = await axios.put(
-      `/todos/${id}`,
+      `${TODO_URL}/${id}`,
       JSON.stringify({
         todo: todo,
         isCompleted: isCompleted,
@@ -49,7 +48,6 @@ const modifyTodo = async ({ id, todo, isCompleted }) => {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           "Content-Type": "application/json",
         },
-        withCredentials: true,
       }
     );
     return response.data;
@@ -60,12 +58,10 @@ const modifyTodo = async ({ id, todo, isCompleted }) => {
 
 const deleteTodo = async ({ id }) => {
   try {
-    const response = await axios.delete(`/todos/${id}`, {
+    const response = await axios.delete(`${TODO_URL}/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        "Content-Type": "application/json",
       },
-      withCredentials: true,
     });
     return response.data;
   } catch (err) {
